@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des étudiants</title>
+</head>
+<body>
+<h1>Liste des étudiants</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de naissance</th>
+        <th>Classe</th>
+    </tr>
+    <tr th:each="etudiant : ${etudiants}">
+        <td th:text="${etudiant.id}"></td>
+        <td th:text="${etudiant.nom}"></td>
+        <td th:text="${etudiant.prenom}"></td>
+        <td th:text="${#dates.format(etudiant.dateNaissance, 'dd/MM/yyyy')}"></td>
+        <td th:text="${etudiant.classe.libelle}"></td>
+    </tr>
+</table>
+</body>
+</html>

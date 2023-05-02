@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Éditer un étudiant</title>
+</head>
+<body>
+<h1>Éditer un étudiant</h1>
+<form method="post" th:action="@{/etudiants/save}">
+    <input type="hidden" th:field="*{id}" />
+    <p>
+        <label>Nom :</label>
+        <input type="text" th:field="*{nom}" required />
+    </p>
+    <p>
+        <label>Prénom :</label>
+        <input type="text" th:field="*{prenom}" required />
+    </p>
+    <p>
+        <label>Date de naissance :</label>
+        <input type="date" th:field="*{dateNaissance}" required />
+    </p>
+    <p>
+        <label>Classe :</label>
+        <select th:field="*{Classe}" required>
+            <option value="">Sélectionnez une classe</option>
+            <option th:each="classe : ${classes}"
+                    th:value="${classe.id}"
+                    th:text="${classe.libelle}">
+            </option>
+        </select>
+    </p>
+    <p>
+        <button type="submit">Enregistrer</button>
+        <a href="/Etudiant">Annuler</a>
+    </p>
+</form>
+</body>
+</html>
